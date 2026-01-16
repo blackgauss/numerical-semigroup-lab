@@ -1,0 +1,22 @@
+name = "NumericalSemigroupLab"
+uuid = "7c8b7b9e-1234-5678-9abc-def012345678"
+authors = ["Your Name <your.email@example.com>"]
+version = "0.1.0"
+
+[deps]
+DataStructures = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+Memoize = "c03570c3-d221-55d1-a50c-7939bbd78826"
+
+[compat]
+DataStructures = "0.18"
+Documenter = "1.16.1"
+Memoize = "0.4"
+julia = "1.9"
+
+[extras]
+BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test", "BenchmarkTools"]
