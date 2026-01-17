@@ -52,6 +52,14 @@ S == T                # true
 
 Full API reference and examples: **[Documentation](https://blackgauss.github.io/numerical-semigroup-lab/)**
 
+To build documentation locally:
+
+```julia
+cd docs
+julia --project=. -e 'using Pkg; Pkg.instantiate(); include("make.jl")'
+# Open docs/build/index.html in browser
+```
+
 ## Features
 
 - **Numerical Semigroups**: Constructors, Apery sets, minimal generators, Kunz coordinates
