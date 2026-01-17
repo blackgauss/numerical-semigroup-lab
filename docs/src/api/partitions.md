@@ -36,7 +36,7 @@ gaps(p)  # [1, 2, 4, 5, 7]
 
 **Algorithm:** O(F²) where F is the Frobenius number
 
-**See Also:** [`partition`](@ref)
+**See Also:** `partition`
 
 ## Conjugation
 
@@ -82,7 +82,7 @@ conjugate(p2).parts  # [5]
 **Algorithm:** O(n + m) where n, m are dimensions  
 **Caching:** Results are cached for repeated calls
 
-**See Also:** [`hook_lengths`](@ref)
+**See Also:** `hook_lengths`
 
 ## Hook Lengths
 
@@ -131,7 +131,7 @@ where λ is the partition and λ' is its conjugate.
 **Algorithm:** O(n·m) where n, m are dimensions  
 **Caching:** Results are cached for repeated calls
 
-**See Also:** [`conjugate`](@ref), [`atom_partition`](@ref)
+**See Also:** `conjugate`, `atom_partition`
 
 ## Profile and Walks
 
@@ -164,7 +164,7 @@ length(profile(p)) == sum(p.parts)  # true
 
 **Algorithm:** O(n·m)  
 
-**See Also:** [`gaps`](@ref)
+**See Also:** `gaps`
 
 ## Atom Operations
 
@@ -194,7 +194,7 @@ println(atom_p)  # Derived from hook structure
 
 **Algorithm:** O(n·m·log(nm))  
 
-**See Also:** [`atom_monoid_gaps`](@ref), [`is_semigroup`](@ref)
+**See Also:** `atom_monoid_gaps`, `is_semigroup`
 
 ### `atom_monoid_gaps`
 
@@ -220,7 +220,7 @@ println(sort(atom_gaps))
 
 **Algorithm:** O(n·m·log(nm))  
 
-**See Also:** [`hook_lengths`](@ref), [`atom_partition`](@ref)
+**See Also:** `hook_lengths`, `atom_partition`
 
 ### `is_semigroup`
 
@@ -255,7 +255,7 @@ end
 
 **Algorithm:** O(n·m·log(nm))  
 
-**See Also:** [`atom_partition`](@ref)
+**See Also:** `atom_partition`
 
 ## Performance Notes
 

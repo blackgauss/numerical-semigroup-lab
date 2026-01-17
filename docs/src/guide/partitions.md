@@ -154,7 +154,7 @@ gaps_vec = gaps(p)
 println(gaps_vec)  # [1, 2, 4, 5, 8]
 ```
 
-This uses the partition-semigroup bijection (see [Mathematical Background](@ref)).
+This uses the partition-semigroup bijection (see [Mathematical Background](../math-background.md)).
 
 ## Advanced Operations
 
@@ -342,6 +342,6 @@ println("Number of SYT: ", num_tableaux)  # 16
 
 ## Next Steps
 
-- Learn about [Numerical Sets](@ref) and their properties
-- Understand the [partition-semigroup bijection](@ref)
-- Explore [Examples](@ref) with real applications
+- Learn about [Numerical Sets](numerical-sets.md) and their properties
+- Understand the partition-semigroup bijection in the [Mathematical Background](../math-background.md)
+- Explore [Examples](../examples/basic.md) with real applications

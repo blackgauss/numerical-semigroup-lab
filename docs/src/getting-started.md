@@ -272,10 +272,10 @@ ns1 = NumericalSet([5, 2, 1, 4])  # Same as NumericalSet([1, 2, 4, 5])
 
 ## Next Steps
 
-- Learn about the [Mathematical Background](@ref) behind these structures
-- Explore [Partition operations](@ref) in detail
-- Understand [Numerical Sets](@ref) more deeply
-- Try the [Examples](@ref) to see real applications
+- Learn about the [Mathematical Background](math-background.md) behind these structures
+- Explore [Partition operations](guide/partitions.md) in detail
+- Understand [Numerical Sets](guide/numerical-sets.md) more deeply
+- Try the [Examples](examples/basic.md) to see real applications
 
 ## Quick Reference Card
 

@@ -11,13 +11,8 @@ Poset
 gap_poset
 void_poset
 cover_relations
-is_below
-is_above
-upper_set
-lower_set
 maximal_elements
 minimal_elements
-is_chain
 ```
 
 ### Examples
@@ -30,11 +25,6 @@ S = NumericalSemigroup([3, 5, 7])  # gaps = [1, 2, 4]
 # Create the gap poset (divisibility order)
 P = gap_poset(S)
 P.elements  # [1, 2, 4]
-
-# Check relations: 1 | 2 and 1 | 4
-is_below(P, 1, 2)  # true (1 divides 2)
-is_below(P, 2, 4)  # true (2 divides 4)
-is_below(P, 1, 4)  # true (1 divides 4, by transitivity)
 
 # Maximal elements in divisibility order
 maximal_elements(P)  # [4]

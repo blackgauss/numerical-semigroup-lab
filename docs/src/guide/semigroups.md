@@ -265,6 +265,6 @@ end
 
 ## See Also
 
-- [Mathematical Background](@ref) - Theory of numerical semigroups
-- [Numerical Semigroup API](@ref) - Complete function reference
-- [Numerical Sets](@ref) - Related numerical set operations
+- [Mathematical Background](../math-background.md) - Theory of numerical semigroups
+- [Numerical Semigroup API](../api/numerical-semigroups.md) - Complete function reference
+- [Numerical Sets](numerical-sets.md) - Related numerical set operations

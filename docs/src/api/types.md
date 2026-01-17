@@ -226,7 +226,7 @@ println(length(p.parts))      # 3
 
 ## See Also
 
-- [`gaps`](@ref): Extract gaps from numerical sets or partitions
-- [`frobenius_number`](@ref): Get the Frobenius number
-- [`conjugate`](@ref): Compute partition conjugate
-- [`partition`](@ref): Convert numerical set to partition
+- `gaps`: Extract gaps from numerical sets or partitions
+- `frobenius_number`: Get the Frobenius number
+- `conjugate`: Compute partition conjugate
+- `partition`: Convert numerical set to partition

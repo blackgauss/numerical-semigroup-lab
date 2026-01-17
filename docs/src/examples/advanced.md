@@ -378,6 +378,6 @@ end
 
 ## Next Steps
 
-- Review [Basic Examples](@ref) for introductory usage
-- Check [API Reference](@ref) for complete function documentation
-- Read [Mathematical Background](@ref) for theoretical foundations
+- Review [Basic Examples](basic.md) for introductory usage
+- Check [API Reference](../api/types.md) for complete function documentation
+- Read [Mathematical Background](../math-background.md) for theoretical foundations

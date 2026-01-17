@@ -129,9 +129,9 @@ If you use this package in your research, please cite:
 
 ## Getting Help
 
-- 📖 Read the [User Guide](@ref)
-- 💻 Check the [Examples](@ref)
-- 📚 Browse the [API Reference](@ref)
+- 📖 Read the [Getting Started](getting-started.md) guide
+- 💻 Check the [Basic Examples](examples/basic.md)
+- 📚 Browse the [API documentation](api/types.md)
 - 🐛 Report issues on [GitHub](https://github.com/blackgauss/numerical-semigroup-lab/issues)
 
 ## Contents

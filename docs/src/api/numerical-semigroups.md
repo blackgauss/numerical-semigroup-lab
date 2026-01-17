@@ -327,6 +327,6 @@ All functions that work on `AbstractNumericalSet` (like `gaps`, `frobenius_numbe
 
 ## See Also
 
-- [Numerical Set Operations](@ref) - Functions for numerical sets
-- [Core Types](@ref) - Type definitions
-- [Mathematical Background](@ref) - Theory of numerical semigroups
+- [Numerical Set Operations](numerical-sets.md) - Functions for numerical sets
+- [Core Types](types.md) - Type definitions
+- [Mathematical Background](../math-background.md) - Theory of numerical semigroups

@@ -393,6 +393,6 @@ ns = NumericalSet([1, 2, 4, 5, 7])
 
 ## Next Steps
 
-- Learn about [Numerical Semigroups](@ref) and generators
-- Explore the [Mathematical Background](@ref) of the bijection
-- Try [Advanced Examples](@ref) with real computations
+- Learn about [Numerical Semigroups](semigroups.md) and generators
+- Explore the [Mathematical Background](../math-background.md) of the bijection
+- Try [Advanced Examples](../examples/advanced.md) with real computations

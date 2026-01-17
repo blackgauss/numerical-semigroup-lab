@@ -380,6 +380,6 @@ println("\nResults identical: ", conj1 === conj2)
 
 ## Next Steps
 
-- Try [Advanced Examples](@ref) for more complex applications
-- Read the [API Reference](@ref) for complete function documentation
-- Explore the [Mathematical Background](@ref) for theory
+- Try [Advanced Examples](advanced.md) for more complex applications
+- Read the [API Reference](../api/types.md) for complete function documentation
+- Explore the [Mathematical Background](../math-background.md) for theory

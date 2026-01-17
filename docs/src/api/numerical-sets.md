@@ -96,7 +96,7 @@ multiplicity(ns)  # 2
 
 **Algorithm:** O(F) where F is the Frobenius number
 
-**See Also:** [`small_elements`](@ref)
+**See Also:** `small_elements`
 
 ### `small_elements`
 
@@ -128,7 +128,7 @@ g = gaps(ns)
 
 **Algorithm:** O(F) where F is the Frobenius number
 
-**See Also:** [`frobenius_number`](@ref), [`multiplicity`](@ref)
+**See Also:** `frobenius_number`, `multiplicity`
 
 ## Conversion to Partition
 
@@ -165,7 +165,7 @@ gaps(ns) == gaps(ns2)  # true (as BitSets)
 **Algorithm:** O(F²) where F is the Frobenius number
 
 **Mathematical Background:**  
-The bijection between numerical sets and partitions is based on a boundary walk of the Ferrers diagram. See [Mathematical Background](@ref) for details.
+The bijection between numerical sets and partitions is based on a boundary walk of the Ferrers diagram. See [Mathematical Background](../math-background.md) for details.
 
 **See Also:** [`gaps(::Partition)`](@ref)
 
@@ -202,7 +202,7 @@ println(sort(collect(atom_gaps)))
 
 **Complexity:** O(F² · |S|) where F is Frobenius number and S is small elements
 
-**See Also:** [`small_elements`](@ref), [`atom_monoid_gaps(::Partition)`](@ref)
+**See Also:** `small_elements`, `atom_monoid_gaps`
 
 ## Practical Examples
 
@@ -382,6 +382,6 @@ p = Partition(partition(ns))
 
 ## See Also
 
-- [Partition Operations](@ref): Converting between representations
-- [`Partition`](@ref): The dual type
-- [Mathematical Background](@ref): Theory behind the bijection
+- [Partition Operations](partitions.md): Converting between representations
+- `Partition`: The dual type
+- [Mathematical Background](../math-background.md): Theory behind the bijection

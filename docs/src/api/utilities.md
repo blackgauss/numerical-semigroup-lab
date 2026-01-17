@@ -299,6 +299,6 @@ cache_hit_rate_test(partitions)
 
 ## See Also
 
-- [Core Types](@ref): Main data structures
-- [Partition Operations](@ref): Partition-specific functions
-- [Numerical Set Operations](@ref): NumericalSet-specific functions
+- [Core Types](types.md): Main data structures
+- [Partition Operations](partitions.md): Partition-specific functions
+- [Numerical Set Operations](numerical-sets.md): NumericalSet-specific functions
