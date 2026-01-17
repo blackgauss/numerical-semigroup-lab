@@ -43,8 +43,7 @@ Get all children of S in the semigroup tree.
 A child is obtained by removing an element from S (making it a new gap),
 which must be a valid operation that preserves the semigroup structure.
 
-The valid elements to remove are those greater than the Frobenius number
-that are not expressible as sums of smaller elements.
+Children have genus(S) + 1.
 
 # Examples
 ```julia
@@ -55,8 +54,18 @@ children = get_children(S)  # Semigroups with genus 5
 function get_children(S::NumericalSemigroup)
     children = NumericalSemigroup[]
     
-    # Find candidates: elements just above the Frobenius number
-    # that can be removed to create valid semigroups
+    # Special case: ℕ₀ has one child: ⟨2, 3⟩ (adding 1 as gap)
+    if S.frobenius < 0
+        try
+            child = semigroup_from_gaps([1])
+            push!(children, child)
+        catch
+            # Should not happen
+        end
+        return children
+    end
+    
+    # Find candidates: elements that can be removed
     candidates = effective_generators(S)
     
     for c in candidates
@@ -79,10 +88,11 @@ end
 
 Find elements that can be removed from S to create a valid child semigroup.
 
-These are the "effective generators" — elements n > F(S) such that:
+An element n > F(S) can be removed (made into a gap) if and only if:
 1. n is in S
-2. n - g ∈ S for all g ∈ gaps(S) implies n can potentially be removed
-3. Removing n preserves closure under addition
+2. n cannot be written as a + b where a, b ∈ S \\ {0, n}
+
+These correspond to the minimal generators greater than F(S).
 
 # Examples
 ```julia
@@ -92,12 +102,18 @@ effective_generators(S)  # Elements that can become new gaps
 """
 function effective_generators(S::NumericalSemigroup)
     F = S.frobenius
-    F < 0 && return Int[]  # S = ℕ₀, no children in standard tree
+    
+    # For genus 0 (S = ℕ₀), the only child is obtained by adding 1 as a gap
+    if F < 0
+        return [1]
+    end
     
     candidates = Int[]
+    m = S.multiplicity
     
-    # Check elements from F+1 to 2F+1
-    for n in (F + 1):(2 * F + 1)
+    # Check elements from F+1 up to F+m (beyond this, all elements are expressible)
+    # Actually, minimal generators > F must be in {F+1, F+2, ..., F+m}
+    for n in (F + 1):(F + m)
         if n in S && can_be_new_frobenius(S, n)
             push!(candidates, n)
         end
