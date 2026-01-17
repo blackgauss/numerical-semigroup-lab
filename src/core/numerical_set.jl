@@ -98,14 +98,14 @@ end
 """
     partition(ns::AbstractNumericalSet) -> Vector{Int}
 
-Create a partition from the numerical set using a walk profile algorithm.
+Create a partition from the numerical set using a lattice path bijection.
 
-The walk is defined as:
-- Start at 0
-- If current number is in gaps, move up (new row)
-- If not in gaps, move right (extend current row)
-- Continue until reaching the maximum gap
-- Return row lengths in descending order
+The algorithm walks from 0 to the Frobenius number:
+- Non-gaps correspond to East steps (moving right)
+- Gaps correspond to North steps (moving up)
+
+At each gap (North step), record the current x-coordinate (number of non-gaps 
+seen so far). This gives the row lengths of the Young diagram.
 
 # Examples
 ```julia
@@ -114,39 +114,34 @@ p = partition(ns)  # Returns a partition vector
 
 S = NumericalSemigroup([3, 5])
 p = partition(S)   # Also works on semigroups
+# S = ⟨3,4⟩ has gaps {1,2,5}, partition is [3,1,1]
 ```
 
 # Algorithm
 This establishes a bijection between numerical sets and integer partitions.
+The partition sum equals the Frobenius number.
 """
 function partition(ns::AbstractNumericalSet)
     gap_set = gaps(ns)
     isempty(gap_set) && return Int[]
     
-    # Convert to sorted vector for iteration
-    gaps_vec = sort(collect(gap_set))
-    max_gap = maximum(gaps_vec)
+    max_gap = maximum(gap_set)
     
-    # Initialize partition
+    # x = number of non-gaps (East steps) seen so far
+    x = 0
     partition_vec = Int[]
-    current_row_length = 0
     
     # Walk from 0 to max_gap
     for i in 0:max_gap
         if i in gap_set
-            # Move up: end current row if it has length
-            if current_row_length > 0
-                push!(partition_vec, current_row_length)
+            # North step: record current x-coordinate as row length
+            if x > 0
+                push!(partition_vec, x)
             end
         else
-            # Move right: extend current row
-            current_row_length += 1
+            # East step: increment x
+            x += 1
         end
-    end
-    
-    # Add final row if needed
-    if current_row_length > 0
-        push!(partition_vec, current_row_length)
     end
     
     # Sort in descending order

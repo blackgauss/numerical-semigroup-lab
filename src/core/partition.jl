@@ -12,56 +12,37 @@ This file implements the Partition type and all its methods including:
 """
     gaps(p::Partition) -> Vector{Int}
 
-Compute the gaps in the profile of the partition.
+Compute the gaps corresponding to the partition using the lattice path bijection.
 
-The profile is a walk around the partition boundary, and gaps occur
-at "up" moves in this walk.
+This is the inverse of the `partition(ns)` function. Given a partition,
+reconstruct the gap set of the numerical set.
+
+The bijection works as follows:
+- Each part represents the x-coordinate (number of non-gaps seen) when a gap was encountered
+- Parts sorted in ascending order give gaps in order of occurrence
+- Gap position = part value + (number of gaps already placed)
 
 # Examples
 ```julia
-p = Partition([5, 4, 3, 1])
-gaps(p)  # Returns gaps from the walk profile
+p = Partition([3, 1, 1])
+gaps(p)  # [1, 2, 5] - the gaps of ⟨3, 4⟩
 ```
 """
 function gaps(p::Partition)
     parts = p.parts
     isempty(parts) && return Int[]
     
-    max_part = maximum(parts)
-    gap_set = Int[]
-    current_col = 0
-    i = 0
+    # Sort parts in ascending order to process gaps in order of occurrence
+    parts_asc = sort(parts)
     
-    # Walk around the partition boundary
-    for row_idx in length(parts):-1:1
-        row_length = parts[row_idx]
-        
-        # Move right
-        while current_col < row_length
-            current_col += 1
-            i += 1
-        end
-        
-        # Move up (this creates a gap)
-        if row_idx > 1 || current_col < max_part
-            push!(gap_set, i)
-            i += 1
-        end
+    gap_list = Int[]
+    for (i, x) in enumerate(parts_asc)
+        # Gap position = x-value + number of gaps already found
+        gap_pos = x + (i - 1)
+        push!(gap_list, gap_pos)
     end
     
-    # Continue moving up to complete the profile
-    while current_col < max_part
-        current_col += 1
-        while current_col <= max_part
-            push!(gap_set, i)
-            i += 1
-            if current_col == max_part
-                break
-            end
-        end
-    end
-    
-    return gap_set
+    return gap_list
 end
 
 """
