@@ -52,10 +52,8 @@ include("core/numerical_semigroup.jl")  # Define type before algorithms
 
 # Algorithm implementations (depend on types)
 include("algorithms/gaps.jl")
-include("algorithms/generators.jl")
 include("algorithms/apery.jl")
 include("algorithms/minimalgenerators.jl")
-include("algorithms/partition_algorithms.jl")
 
 # Semigroup constructors (depend on algorithms)
 include("core/semigroup_constructors.jl")
