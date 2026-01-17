@@ -4,8 +4,6 @@
 # is the set of smallest elements in each congruence class modulo n:
 #   Ap(S, n) = {s ∈ S : s - n ∉ S}
 
-using Memoize
-
 """
     apery_set(S::NumericalSemigroup, n::Int) -> Vector{Int}
 
