@@ -1,13 +1,18 @@
 using Test
 using NumericalSemigroupLab
 
-@testset "NumericalSemigroupLab All Tests" begin
-    # Phase 1: Core data structures
-    include("test_phase1.jl")
+@testset "NumericalSemigroupLab" begin
+    # Core data structures
+    include("test_partitions.jl")
+    include("test_numerical_sets.jl")
+    include("test_semigroups.jl")
     
-    # Phase 2: Numerical semigroups from generators
-    include("test_phase2.jl")
+    # Advanced features
+    include("test_posets.jl")
+    include("test_weights.jl")
+    include("test_tree.jl")
+    include("test_special_gaps.jl")
     
-    # Phase 3: Advanced features (posets, weights, tree navigation, special gaps)
-    include("test_phase3.jl")
+    # Utilities
+    include("test_utilities.jl")
 end
