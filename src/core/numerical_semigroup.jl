@@ -209,11 +209,13 @@ Compute the minimal generating set from a set of gaps.
 
 An element n is a minimal generator if:
 1. n is not a gap (i.e., n is in the semigroup)
-2. n cannot be written as a sum of two smaller elements that are also in the semigroup
+2. n cannot be written as a sum of two positive elements that are also in the semigroup
 
 # Algorithm
-Iterate through positive integers up to Frobenius + 1, checking if each
-non-gap can be expressed as a sum of two smaller non-gaps.
+Iterate through positive integers, checking if each non-gap can be expressed 
+as a sum of two smaller non-gaps. The search continues until we find m 
+consecutive non-gaps that are all expressible (where m is the multiplicity),
+since beyond that point all elements are expressible.
 """
 function minimal_generating_set_from_gaps(gaps::BitSet)
     if isempty(gaps)
@@ -222,27 +224,33 @@ function minimal_generating_set_from_gaps(gaps::BitSet)
     end
     
     frobenius = maximum(gaps)
+    
+    # Find multiplicity (smallest positive non-gap)
+    m = 1
+    while m in gaps
+        m += 1
+    end
+    
     minimal_gens = Int[]
     
-    # Check numbers from 1 up to Frobenius + 1
-    # (all minimal generators must be ≤ Frobenius + 1)
-    for n in 1:(frobenius + 1)
+    # Upper bound: once we have m consecutive expressible elements,
+    # all further elements are also expressible.
+    # Safe bound: frobenius + m (all generators must be < conductor + m)
+    upper_bound = frobenius + m
+    
+    for n in 1:upper_bound
         if n in gaps
             continue  # n is a gap, can't be a generator
         end
         
-        # Check if n can be expressed as sum of two smaller non-gaps
+        # Check if n can be expressed as sum of two positive non-gaps
         # n = a + b where a, b > 0 and neither is a gap
         can_express = false
         for a in 1:(n ÷ 2)  # Only check up to n/2 to avoid duplicates
             if !(a in gaps)
                 b = n - a
-                if b > 0 && b != a && !(b in gaps)
+                if b > 0 && !(b in gaps)
                     # n = a + b where both a and b are in the semigroup
-                    can_express = true
-                    break
-                elseif b == a && !(b in gaps)
-                    # n = a + a = 2a
                     can_express = true
                     break
                 end
