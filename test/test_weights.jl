@@ -7,17 +7,29 @@ using NumericalSemigroupLab
     
     @testset "Effective weight" begin
         S = NumericalSemigroup([3, 5])
+        # Gaps are [1, 2, 4, 7], Frobenius = 7
         
-        # 6 = 3 + 3, effective weight is 1
-        @test effective_weight(S, 6) == 1
+        # ew(3) = #{gaps > 3} = #{4, 7} = 2
+        @test effective_weight(S, 3) == 2
         
-        # Gap 1 cannot be sum of two positive elements in S
+        # ew(5) = #{gaps > 5} = #{7} = 1
+        @test effective_weight(S, 5) == 1
+        
+        # Non-generator returns 0
+        @test effective_weight(S, 6) == 0
         @test effective_weight(S, 1) == 0
         
-        # Dictionary form
-        weights = effective_weight(S)
-        @test weights isa Dict{Int, Int}
-        @test haskey(weights, 7)
+        # Total effective weight of semigroup
+        @test effective_weight(S) == 3  # ew(3) + ew(5) = 2 + 1
+        
+        # Another example
+        S2 = NumericalSemigroup([4, 5, 6])
+        # Gaps are [1, 2, 3, 7]
+        # ew(4) = #{7} = 1, ew(5) = #{7} = 1, ew(6) = #{7} = 1
+        @test effective_weight(S2, 4) == 1
+        @test effective_weight(S2, 5) == 1
+        @test effective_weight(S2, 6) == 1
+        @test effective_weight(S2) == 3
     end
     
     @testset "Apéry weight" begin

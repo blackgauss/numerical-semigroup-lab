@@ -4,54 +4,52 @@
 # numerical semigroups, including effective weight and Apéry weight.
 
 """
-    effective_weight(S::NumericalSemigroup, g::Int) -> Int
+    effective_weight(S::NumericalSemigroup, a::Int) -> Int
 
-Compute the effective weight of a gap g in the semigroup S.
+Compute the effective weight of a minimal generator `a` in the semigroup S.
 
-The effective weight of g is the number of pairs (s₁, s₂) ∈ S × S with s₁, s₂ > 0
-such that s₁ + s₂ = g.
+The effective weight of a minimal generator `a` is defined as:
+    ew(a) = #{l | l ∉ S and l > a}
+
+That is, the count of gaps that are greater than `a`.
+
+Returns 0 if `a` is not a minimal generator of S.
 
 # Examples
 ```julia
 S = NumericalSemigroup([3, 5])
-effective_weight(S, 6)   # 1 (only 3+3=6)
-effective_weight(S, 8)   # 1 (only 3+5=8)
-effective_weight(S, 10)  # 2 (5+5=10 and 3+7... but 7 is a gap)
+# Gaps are [1, 2, 4, 7], Frobenius = 7
+effective_weight(S, 3)   # 2 (gaps > 3 are: 4, 7)
+effective_weight(S, 5)   # 1 (gaps > 5 are: 7)
+effective_weight(S, 2)   # 0 (2 is not a minimal generator)
 ```
 """
-function effective_weight(S::NumericalSemigroup, g::Int)
-    g <= 0 && return 0
+function effective_weight(S::NumericalSemigroup, a::Int)
+    # Only defined for minimal generators
+    a in S.generators || return 0
     
-    count = 0
-    # Count unordered pairs (s1, s2) with s1 <= s2, both in S, s1 > 0, s2 > 0, s1 + s2 = g
-    for s1 in 1:(g ÷ 2)
-        s2 = g - s1
-        if s1 in S && s2 in S
-            count += 1
-        end
-    end
-    # Handle the case where g is even and g/2 is in S (counted once above, which is correct)
-    
-    return count
+    # Count gaps greater than a
+    return count(g -> g > a, S.gaps)
 end
 
 """
-    effective_weight(S::NumericalSemigroup) -> Dict{Int, Int}
+    effective_weight(S::NumericalSemigroup) -> Int
 
-Compute the effective weight for all gaps in S.
+Compute the effective weight of the semigroup S.
+
+The effective weight of S is the sum of the effective weights of all 
+minimal generators:
+    ew(S) = Σ_{a ∈ generators(S)} ew(a)
 
 # Examples
 ```julia
 S = NumericalSemigroup([3, 5])
-w = effective_weight(S)  # Dict with effective weights for each gap
+# ew(3) = 2, ew(5) = 1
+effective_weight(S)  # 3
 ```
 """
 function effective_weight(S::NumericalSemigroup)
-    result = Dict{Int, Int}()
-    for g in S.gaps
-        result[g] = effective_weight(S, g)
-    end
-    return result
+    return sum(effective_weight(S, a) for a in S.generators)
 end
 
 """
