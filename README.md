@@ -50,8 +50,6 @@ S == T                # true
 
 ## Documentation
 
-Full API reference and examples: **[Documentation](https://blackgauss.github.io/numerical-semigroup-lab/)**
-
 To build documentation locally:
 
 ```julia
@@ -78,6 +76,8 @@ julia --project=. -e 'using Pkg; Pkg.instantiate(); include("make.jl")'
 
 MIT License - see [LICENSE](LICENSE) for details.
 
-## Author
+## Author & Contact
 
-**Erik Imathiu-Jones** ([@blackgauss](https://github.com/blackgauss))
+**Erik Imathiu-Jones** — [GitHub](https://github.com/blackgauss) · [Issues](https://github.com/blackgauss/numerical-semigroup-lab/issues)
+
+Developed with assistance from [Claude](https://claude.ai) (Anthropic). Special thanks to the numerical semigroups research community, particularly the developers of [GAP numericalsgps](https://github.com/gap-packages/numericalsgps).

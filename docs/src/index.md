@@ -2,11 +2,11 @@
 
 *A high-performance Julia package for computational algebra with numerical semigroups, numerical sets, and integer partitions.*
 
-## Author
+## Author & Contact
 
-**Erik Imathiu-Jones** ([@blackgauss](https://github.com/blackgauss))
+**Erik Imathiu-Jones** — [GitHub](https://github.com/blackgauss) · [Issues](https://github.com/blackgauss/numerical-semigroup-lab/issues)
 
-This package was developed with extensive use of [Claude](https://claude.ai) (Anthropic) as an AI programming assistant. While Claude assisted with code generation, documentation, and testing, all mathematical concepts, architectural decisions, and final implementations were carefully reviewed and directed by the author.
+This package was developed with assistance from [Claude](https://claude.ai) (Anthropic). Special thanks to the numerical semigroups research community, particularly the developers of [GAP numericalsgps](https://github.com/gap-packages/numericalsgps) whose work has been invaluable.
 
 ## What is this package?
 
