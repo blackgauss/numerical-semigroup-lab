@@ -189,9 +189,13 @@ atom_monoid_gaps(ns)
 | `minimal_generating_set(S)` | Alias for generators |
 | `is_minimal_generator(S, n)` | Check if n is a minimal generator |
 | `n in S` | Check membership |
-| `elements_up_to(S, n)` | All elements ≤ n |
-| `apery_set(S, n)` | Apéry set with respect to n |
-| `apery_set(S)` | Apéry set with respect to multiplicity |
+| `elements_up_to(S, n)` | All elements up to n |
+| `apery_set(S, n)` | Apery set with respect to n |
+| `apery_set(S)` | Apery set with respect to multiplicity |
+| `kunz_coordinates(S)` | Kunz coordinate vector |
+| `void(S)` | Pseudo-Frobenius numbers |
+| `type_semigroup(S)` | Number of pseudo-Frobenius numbers |
+| `is_symmetric(S)` | Check if semigroup is symmetric |
 | `small_elements(S)` | Non-gaps up to Frobenius number |
 | `partition(S)` | Convert to partition |
 | `atom_monoid_gaps(S)` | Compute atom monoid gaps |
@@ -270,8 +274,8 @@ atom_monoid_gaps(ns)
 
 | Function | Description |
 |----------|-------------|
-| `special_gaps(S)` | Pseudo-Frobenius numbers (void elements) |
-| `is_symmetric(S)` | Check if semigroup is symmetric |
+| `special_gaps(S)` | Alias for void (pseudo-Frobenius numbers) |
+| `pseudofrobenius_numbers(S)` | Alias for void |
 | `is_pseudo_symmetric(S)` | Check if semigroup is pseudo-symmetric |
 | `fundamental_gaps(S)` | Minimal gaps generating all gaps |
 | `forced_gaps(S, g)` | Gaps forced by adding g as special gap |
