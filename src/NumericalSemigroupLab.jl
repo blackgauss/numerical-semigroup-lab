@@ -35,10 +35,6 @@ S2 = NumericalSemigroup(gaps=[1, 2, 4, 5, 7, 8])
 """
 module NumericalSemigroupLab
 
-# Standard library imports
-using DataStructures: SortedSet
-using Memoize: @memoize
-
 # Core types and functionality
 include("core/types.jl")
 include("utils/helpers.jl")
